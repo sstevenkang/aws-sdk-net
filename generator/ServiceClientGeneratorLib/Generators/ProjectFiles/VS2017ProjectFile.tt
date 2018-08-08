@@ -13,6 +13,15 @@
     <AssemblyName><#=this.Session["AssemblyName"]#></AssemblyName>
     <PackageId><#=this.Session["AssemblyName"]#></PackageId>
 
+<#
+    if(this.Session.ContainsKey("PathMapValue") && !string.IsNullOrEmpty((string)Session["PathMapValue"]))
+    {
+#>
+    <PathMap>$(MSBuildProjectDirectory)\=<#=this.Session["PathMapValue"].ToString()#></PathMap>
+
+<#
+	}
+#>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>

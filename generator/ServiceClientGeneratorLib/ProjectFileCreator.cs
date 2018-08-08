@@ -262,7 +262,8 @@ namespace ServiceClientGenerator
         }
         private void GenerateVS2017ProjectFile(string serviceFilesRoot, ServiceConfiguration serviceConfiguration, ProjectFileConfiguration projectFileConfiguration)
         {
-            var assemblyName = "AWSSDK." + serviceConfiguration.Namespace.Split('.')[1];
+            var serviceName = serviceConfiguration.Namespace.Split('.')[1];
+            var assemblyName = "AWSSDK." + serviceName;
             var projectType = projectFileConfiguration.Name;
 
             var templateSession = new Dictionary<string, object>();
@@ -278,6 +279,7 @@ namespace ServiceClientGenerator
             templateSession["NoWarn"]               = projectFileConfiguration.NoWarn;
             templateSession["SignBinaries"]         = true;
             templateSession["ConfigurationName"]    = projectFileConfiguration.TargetFrameworkVersion;
+            templateSession["PathMapValue"]         = Path.Combine(@"aws-sdk-net\sdk\src\Services\", serviceName);
 
             List<Dependency> dependencies;
             List<PackageReference> references = new List<PackageReference>();

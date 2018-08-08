@@ -270,12 +270,16 @@ namespace ServiceClientGenerator
                     TemplateName);
                 dynamic generator = Activator.CreateInstance(projectTemplateType);
                 generator.Session = session;
-                generatedContent = generator.TransformText();
+                generatedContent = generator.TransformText(); 
             }
-            catch (Exception)
+            catch (ArgumentNullException)
             {
                 throw new ArgumentException("Project template name "
                     + TemplateName + " is not recognized");
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Exception encountered while generating text from template " + TemplateName, e);
             }
 
             GeneratorDriver.WriteFile(unitTestProjectRoot, string.Empty, projectFilename, generatedContent);

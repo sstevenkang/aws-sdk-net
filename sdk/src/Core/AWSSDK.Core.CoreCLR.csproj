@@ -6,6 +6,10 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>AWSSDK.Core</AssemblyName>
     <PackageId>AWSSDK.Core</PackageId>
+
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <PathMap>$(MSBuildProjectDirectory)\=aws-sdk-net\sdk\src\Core\</PathMap>
     
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
